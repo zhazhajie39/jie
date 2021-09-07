@@ -1,0 +1,47 @@
+材料：
+远程仓库：git@github.com:zhazhajie39/jie.git
+git软件版本：略
+
+使用git前的准备工作
+
+1.打开git bash，配置全局用户名与邮箱
+git config --global username "yourname"
+git config --global email.name "youremail"
+
+2.申请访问远程仓库的权限
+ssh-keygen -t rsa -C “youremail”//生成密钥，密钥路径默认C/user/admin下的.ssh隐藏文件
+一直回车，可以不设置密码。
+将.shh目录下id_rea.pub密钥文件发送给管理员申请权限
+有权限后就可以克隆远程仓库了
+
+
+如何克隆已有的仓库？
+打开一个空目录，右键->Git Bash Here,输入
+git clone git@github.com:zhazhajie39/jie.git
+等待克隆完毕，打开文件夹，会出现一个.git隐藏文件
+
+把文件提交到远端服务器的某个分支上
+git status //查看文件状态，未在缓存区，文件标红，在缓存区，文件标绿
+git add xxx//添加xxx文件名到缓存区
+git commit -m "msg" //将缓存区的文件提交到本地服务器，比添加提交信息msg
+git push origin master //将本地仓库的内容推送或更新到远端仓库的主支上
+如果推送不成功会有提示
+这时候需要使用
+
+git pull origin master //远端仓库内容合并到本地，如果有冲突
+git status //查看冲突的文件
+
+修改对应的冲突文件然后提交推送到本地服务器
+
+分支管理
+1.新建分支
+git branch XXX//在主支上新建分支名XXX 不切换到分支
+git checkout XXX//切换到XXX分支上
+git branch -a//查看本地远程仓库的所有分支
+或者git checkout -b XXX//在主支上新建分支名XXX 并切换到分支
+git push origin HEAD -u//进入分支中使用此命令，推送当前分支到远端服务器
+2.合并分支
+git checkout master //切到主分支上
+git merge XXX//合并XXX到主分支上
+git add...等推送到远程仓库
+
